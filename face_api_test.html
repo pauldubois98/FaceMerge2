@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+</head>
+
+<body>
+    <img id="myImg" src="val.jpg" height="500">
+
+    <canvas id="myCanvas">
+</body>
+
+<script src="face-api.min.js"></script>
+<script>
+    var loaded = false;
+    async function load() {
+        console.log(faceapi.nets)
+        await faceapi.loadSsdMobilenetv1Model('/models')
+        await faceapi.loadFaceLandmarkModel('/models')
+        loaded = true
+    }
+    async function get_landmarks(image){
+        if (!loaded){
+            await load();
+        }
+        // const detections = await faceapi.detectAllFaces(input)
+        // console.log(detections)
+        const detectionsWithLandmarks = await faceapi.detectAllFaces(image).withFaceLandmarks()
+        console.log(detectionsWithLandmarks);
+        console.log(detectionsWithLandmarks[0].landmarks);
+        return detectionsWithLandmarks[0].landmarks
+    }
+    const input = document.getElementById('myImg')
+    get_landmarks(input)
+</script>
+
+</html>
+
+</html>
