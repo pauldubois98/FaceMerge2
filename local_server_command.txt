@@ -1,0 +1,3 @@
+> python -m http.server
+URL pour navigateur:
+localhost:8000
