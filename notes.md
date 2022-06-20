@@ -17,3 +17,8 @@ https://developer.mozilla.org/fr/docs/Learn/Common_questions/set_up_a_local_test
 > python -m http.server
 URL for browser:
 localhost:8000
+
+## Circle elements
+https://jsfiddle.net/ItayGrudev/3jqryc1m/
+(best solution found so far)
+=> use js to place elements one-by-one with style transform
