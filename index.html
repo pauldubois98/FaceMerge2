@@ -45,16 +45,29 @@
         <h1>Face Merge 2</h1>
     </header>
 
-    <input type="file" id="image-input" accept="image/*" name="image" onchange="loadFile(event)">
-    <p><img id="output" width="200" /></p>
+    <input type="file" id="image-input" accept="image/*" name="image" onchange="addImage(event);">
+    <div id="faces"></div>
 
     <script>
-        var uploaded_image = ""
-        var loadFile = function(event) {
-            var image = document.getElementById('output');
-            image.src = URL.createObjectURL(event.target.files[0]);
-            uploaded_image = event.target.files[0]
+        var faces = document.getElementById("faces");
+
+        function addImage(event) {
+            const img = document.createElement("img");
+            img.src = URL.createObjectURL(event.target.files[0]);;
+            faces.appendChild(img);
+            placeInCircle();
         };
+
+        function placeInCircle() {
+            let circles = faces.querySelectorAll('img');
+            let dangle = 2 * Math.PI / circles.length;
+            let r = Math.min(faces.clientWidth, faces.clientHeight) / 3;
+            for (let i = 0; i < circles.length; ++i) {
+                let circle = circles[i];
+                let angle = dangle * i;
+                circle.style.transform = `translate(${Math.cos(angle)*r}px, ${Math.sin(angle)*r}px)`;
+            }
+        }
     </script>
 
 
