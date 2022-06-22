@@ -46,6 +46,7 @@
     </header>
 
     <input type="file" id="image-input" accept="image/*" name="image" onchange="addImage(event);">
+    <button onclick="placeInCenter();">Center</button>
     <div id="faces"></div>
 
     <script>
@@ -66,6 +67,16 @@
                 let circle = circles[i];
                 let angle = dangle * i;
                 circle.style.transform = `translate(${Math.cos(angle)*r}px, ${Math.sin(angle)*r}px)`;
+            }
+        }
+
+        function placeInCenter() {
+            let circles = faces.querySelectorAll('img');
+            let op = 1 / circles.length;
+            for (let i = 0; i < circles.length; ++i) {
+                let circle = circles[i];
+                circle.style.transform = "";
+                circle.style.opacity = `${op}`;
             }
         }
     </script>
