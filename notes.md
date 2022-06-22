@@ -22,3 +22,7 @@ localhost:8000
 https://jsfiddle.net/ItayGrudev/3jqryc1m/
 (best solution found so far)
 => use js to place elements one-by-one with style transform
+
+## Page screenshot (to save merged):
+HTML 2 Canvas:
+https://hackernoon.com/how-to-take-screenshots-in-the-browser-using-javascript-l92k3xq7
