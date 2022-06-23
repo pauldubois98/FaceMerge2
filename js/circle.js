@@ -1,17 +1,21 @@
 var faces = document.getElementById("faces");
+var faces_landmarks = [];
 
-function addImage(file) {
+async function addImage(file) {
     const img = document.createElement("img");
     img.src = URL.createObjectURL(file);
     faces.appendChild(img);
+    landmarks = await get_landmarks(img);
+    faces_landmarks.push(landmarks);
 }
 
-function upload(event) {
+async function upload(event) {
     for (let index = 0; index < event.target.files.length; index++) {
         const file = event.target.files[index];
         addImage(file);
     }
     circle();
+    console.log(faces_landmarks[0]);
 }
 
 function circle() {
