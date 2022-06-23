@@ -4,7 +4,6 @@ function addImage(file) {
     const img = document.createElement("img");
     img.src = URL.createObjectURL(file);
     faces.appendChild(img);
-    placeInCircle();
 }
 
 function upload(event) {
@@ -12,9 +11,10 @@ function upload(event) {
         const file = event.target.files[index];
         addImage(file);
     }
+    circle();
 }
 
-function placeInCircle() {
+function circle() {
     let circles = faces.querySelectorAll("img");
     let dangle = (2 * Math.PI) / circles.length;
     let op = 1;
@@ -29,12 +29,12 @@ function placeInCircle() {
     }
 }
 
-function placeInCenter() {
+function center() {
     let circles = faces.querySelectorAll("img");
     let op = 1 / circles.length;
     for (let i = 0; i < circles.length; ++i) {
         let circle = circles[i];
-        circle.style.transform = "";
+        circle.style.transform = "scale(2)";
         circle.style.opacity = `${op}`;
     }
 }
