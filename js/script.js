@@ -1,10 +1,17 @@
 var faces = document.getElementById("faces");
 
-function addImage(event) {
+function addImage(file) {
     const img = document.createElement("img");
-    img.src = URL.createObjectURL(event.target.files[0]);
+    img.src = URL.createObjectURL(file);
     faces.appendChild(img);
     placeInCircle();
+}
+
+function upload(event) {
+    for (let index = 0; index < event.target.files.length; index++) {
+        const file = event.target.files[index];
+        addImage(file);
+    }
 }
 
 function placeInCircle() {
