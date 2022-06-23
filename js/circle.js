@@ -1,28 +1,35 @@
-var faces = document.getElementById("faces");
-var faces_landmarks = [];
+var images_div = document.getElementById("faces");
+var images = [];
+var images_landmarks = [];
 
-async function addImage(file) {
+function addImage(file) {
     const img = document.createElement("img");
     img.src = URL.createObjectURL(file);
-    faces.appendChild(img);
-    landmarks = await get_landmarks(img);
-    faces_landmarks.push(landmarks);
+    images_div.appendChild(img);
+    images.push(img);
 }
 
-async function upload(event) {
+function upload(event) {
     for (let index = 0; index < event.target.files.length; index++) {
         const file = event.target.files[index];
         addImage(file);
     }
     circle();
-    console.log(faces_landmarks[0]);
+}
+async function calculate_landmarks() {
+    for (let index = 0; index < images.length; index++) {
+        const img = images[index];
+        landmarks = await get_landmarks(img);
+        images_landmarks.push(landmarks);
+    }
+    console.log(images_landmarks);
 }
 
 function circle() {
-    let circles = faces.querySelectorAll("img");
+    let circles = images_div.querySelectorAll("img");
     let dangle = (2 * Math.PI) / circles.length;
     let op = 1;
-    let r = Math.min(faces.clientWidth, faces.clientHeight) / 3;
+    let r = Math.min(images_div.clientWidth, images_div.clientHeight) / 3;
     for (let i = 0; i < circles.length; ++i) {
         let circle = circles[i];
         let angle = dangle * i;
@@ -34,7 +41,7 @@ function circle() {
 }
 
 function center() {
-    let circles = faces.querySelectorAll("img");
+    let circles = images_div.querySelectorAll("img");
     let op = 1 / circles.length;
     for (let i = 0; i < circles.length; ++i) {
         let circle = circles[i];
