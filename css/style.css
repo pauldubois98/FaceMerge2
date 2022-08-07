@@ -26,3 +26,16 @@ body {
     max-height: 10em;
     transition-duration: 3s;
 }
+
+#hidden_faces {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    display: none;
+}
+#hidden_faces img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
