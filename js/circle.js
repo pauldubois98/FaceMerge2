@@ -1,31 +1,29 @@
 var images_div = document.getElementById("faces");
-var hidden_images_div = document.getElementById("hidden_faces");
 var images = [];
 var hidden_images = [];
 var images_landmarks = [];
 var images_centers = [];
 
 function addImage(file) {
-    const img = document.createElement("img");
+    var img = document.createElement("img");
     img.src = URL.createObjectURL(file);
     images_div.appendChild(img);
     images.push(img);
-    const hidden_img = document.createElement("img");
+    var hidden_img = document.createElement("img");
     hidden_img.src = URL.createObjectURL(file);
-    hidden_images_div.appendChild(hidden_img);
     hidden_images.push(hidden_img);
 }
 
 function upload(event) {
     for (let index = 0; index < event.target.files.length; index++) {
-        const file = event.target.files[index];
+        var file = event.target.files[index];
         addImage(file);
     }
     circle();
 }
 async function calculate_landmarks() {
     for (let index = 0; index < hidden_images.length; index++) {
-        const img = hidden_images[index];
+        var img = hidden_images[index];
         landmarks = await get_landmarks(img);
         images_landmarks.push(landmarks);
     }
