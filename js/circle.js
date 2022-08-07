@@ -21,9 +21,28 @@ async function calculate_landmarks() {
         const img = images[index];
         landmarks = await get_landmarks(img);
         images_landmarks.push(landmarks);
+        var c = center(images_landmarks[index]._positions)
+        console.log(c)
+        console.log(index)
     }
     console.log(images_landmarks);
 }
+
+function center(array) {
+    var total_x = 0;
+    var total_y = 0;
+    var count = 0;
+
+    array.forEach(function(item, index) {
+        total_x += item._x;
+        total_y += item._y;
+        count++;
+    });
+
+    return [total_x / count, total_y / count];
+}
+
+console.log(calculateAverage(arry));
 
 function circle() {
     let circles = images_div.querySelectorAll("img");

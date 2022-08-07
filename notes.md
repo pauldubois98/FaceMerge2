@@ -28,7 +28,7 @@ HTML 2 Canvas:
 https://hackernoon.com/how-to-take-screenshots-in-the-browser-using-javascript-l92k3xq7
 
 ##### TODO:
-- [ ] calculate face center (for translation)
+- [x] calculate face center (for translation)
 - [ ] calculate face size (for scaling)
 - [ ] calculate face orientation (for rotation)
 - [ ] calcutate image transform (mat mult of tranfo, or ombine css?)
