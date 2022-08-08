@@ -7,10 +7,13 @@ async function calculate_landmarks() {
   console.log(images_landmarks);
   calculate_centers();
   console.log(images_centers);
+  calculate_scale();
+  console.log(images_scales);
 }
 
 function calculate_centers() {
   images_centers = [];
+  abs_images_centers = [];
   let circles = images_div.querySelectorAll("img");
   for (let i = 0; i < hidden_images.length; i++) {
     var img = hidden_images[i];
@@ -27,6 +30,7 @@ function calculate_centers() {
       (circles[i].width * (total_x / count)) / img.width,
       (circles[i].height * (total_y / count)) / img.height,
     ];
+    abs_images_centers.push([total_x / count, total_y / count]);
     images_centers.push(f_c);
   }
   var c_x = 0;
@@ -42,4 +46,31 @@ function calculate_centers() {
     images_centers[i][1] -= c_y;
   }
   console.log(c_x, c_y);
+}
+
+function calculate_scale() {
+  images_scales = [];
+  for (let i = 0; i < hidden_images.length; i++) {
+    var img = hidden_images[i];
+    var landmarks = images_landmarks[i];
+    var total = 0;
+    var count = 0;
+    var c_x = abs_images_centers[i][0];
+    var c_y = abs_images_centers[i][1];
+    landmarks._positions.forEach(function (item, j) {
+      total += (item._x - c_x) ** 2 + (item._y - c_y) ** 2;
+      count++;
+    });
+    f_s = Math.sqrt(total / count);
+    images_scales.push(f_s);
+  }
+  var c = merge_scale_factor;
+  for (let i = 0; i < images_scales.length; i++) {
+    c *= images_scales[i];
+  }
+  c = c ** (1 / images_scales.length);
+  for (let i = 0; i < images_scales.length; i++) {
+    images_scales[i] /= c;
+  }
+  console.log(images_scales);
 }

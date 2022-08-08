@@ -2,7 +2,10 @@ var images_div = document.getElementById("faces");
 var images = [];
 var hidden_images = [];
 var images_landmarks = [];
+var abs_images_centers = [];
 var images_centers = [];
+var images_scales = [];
+var merge_scale_factor = 1;
 
 function addImage(file) {
   var img = document.createElement("img");
@@ -41,13 +44,10 @@ function center() {
   let circles = images_div.querySelectorAll("img");
   let op = 1 / circles.length;
   for (let i = 0; i < circles.length; ++i) {
-    try {
-      circles[i].style.transform = `scale(1) translate(${-images_centers[
-        i
-      ][0]}px, ${-images_centers[i][1]}px)`;
-    } catch (error) {
-      circles[i].style.transform = `scale(1)`;
-    }
+    circles[i].style.transform = `\
+    translate(${-images_centers[i][0] * images_scales[i]}px, \
+    ${-images_centers[i][1] * images_scales[i]}px)\
+    scale(${images_scales[i]})`;
     circles[i].style.opacity = `${op}`;
   }
 }
