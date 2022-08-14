@@ -42,15 +42,13 @@ function circle() {
 
 function center() {
   let circles = images_div.querySelectorAll("img");
-  let op = 1 / circles.length;
   for (let i = 0; i < circles.length; ++i) {
     circles[i].style.transform = `\
     translate(${-images_centers[i][0] / images_scales[i]}px, \
     ${-images_centers[i][1] / images_scales[i]}px)\
     scale(${1 / images_scales[i]})`;
-    circles[i].style.opacity = `${op}`;
+    circles[i].style.opacity = `${(1-(i/circles.length))}`;
   }
 }
 
 let circles = images_div.querySelectorAll("img");
-let op = 1 / circles.length;
