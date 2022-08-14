@@ -4,10 +4,13 @@ async function calculate_landmarks() {
     landmarks = await get_landmarks(img);
     images_landmarks.push(landmarks);
   }
+  console.log("landmarks:");
   console.log(images_landmarks);
   calculate_centers();
+  console.log("centers:");
   console.log(images_centers);
   calculate_scale();
+  console.log("scales:");
   console.log(images_scales);
 }
 
@@ -45,7 +48,6 @@ function calculate_centers() {
     images_centers[i][0] -= c_x;
     images_centers[i][1] -= c_y;
   }
-  console.log(c_x, c_y);
 }
 
 function calculate_scale() {
@@ -65,16 +67,13 @@ function calculate_scale() {
     f_s = total / count / span;
     images_scales.push(f_s);
   }
-
   var c = images_scales[0];
   for (let i = 1; i < images_scales.length; i++) {
     if (images_scales[i] > c) {
       c = images_scales[i];
     }
   }
-  //   c = c ** (1 / images_scales.length);
   for (let i = 0; i < images_scales.length; i++) {
     images_scales[i] /= c;
   }
-  console.log(images_scales);
 }
