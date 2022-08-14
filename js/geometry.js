@@ -58,17 +58,21 @@ function calculate_scale() {
     var c_x = abs_images_centers[i][0];
     var c_y = abs_images_centers[i][1];
     landmarks._positions.forEach(function (item, j) {
-      total += (item._x - c_x) ** 2 + (item._y - c_y) ** 2;
+      total += Math.sqrt((item._x - c_x) ** 2 + (item._y - c_y) ** 2);
       count++;
     });
-    f_s = Math.sqrt(total / count);
+    var span = Math.sqrt(img.width ** 2 + img.height ** 2);
+    f_s = total / count / span;
     images_scales.push(f_s);
   }
-  var c = merge_scale_factor;
-  for (let i = 0; i < images_scales.length; i++) {
-    c *= images_scales[i];
+
+  var c = images_scales[0];
+  for (let i = 1; i < images_scales.length; i++) {
+    if (images_scales[i] > c) {
+      c = images_scales[i];
+    }
   }
-  c = c ** (1 / images_scales.length);
+  //   c = c ** (1 / images_scales.length);
   for (let i = 0; i < images_scales.length; i++) {
     images_scales[i] /= c;
   }
