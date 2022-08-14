@@ -29,8 +29,6 @@ https://hackernoon.com/how-to-take-screenshots-in-the-browser-using-javascript-l
 
 ##### TODO:
 - [x] calculate face center (for translation)
-- [ ] calculate face size (for scaling)
+- [x] calculate face size (for scaling)
 - [ ] calculate face orientation (for rotation)
-- [ ] calcutate image transform (mat mult of tranfo, or ombine css?)
-- [ ] perform transfo on images
 - [ ] GUI
