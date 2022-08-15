@@ -1,4 +1,7 @@
 async function calculate_landmarks() {
+  circle_btn.disabled = true;
+  center_btn.disabled = true;
+  images_landmarks = [];
   for (let i = 0; i < hidden_images.length; i++) {
     var img = hidden_images[i];
     landmarks = await get_landmarks(img);
