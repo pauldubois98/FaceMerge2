@@ -1,4 +1,6 @@
 var images_div = document.getElementById("faces");
+var center_btn = document.getElementById("center_btn");
+var circle_btn = document.getElementById("circle_btn");
 var images = [];
 var hidden_images = [];
 var images_landmarks = [];

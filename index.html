@@ -20,8 +20,8 @@
         <input type="file" multiple id="images-input" accept="image/*" name="images" onchange="upload(event);">
         <br>
         <button onclick="calculate_landmarks();">Process</button>
-        <button onclick="center();">Center</button>
-        <button onclick="circle();">Circle</button>
+        <button id="center_btn" onclick="center();" disabled>Center</button>
+        <button id="circle_btn" onclick="circle();" disabled>Circle</button>
     </div>
     <div id="faces"></div>
 

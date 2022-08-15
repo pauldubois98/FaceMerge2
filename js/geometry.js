@@ -12,6 +12,8 @@ async function calculate_landmarks() {
   calculate_scale();
   console.log("scales:");
   console.log(images_scales);
+  circle_btn.disabled = false;
+  center_btn.disabled = false;
 }
 
 function calculate_centers() {
