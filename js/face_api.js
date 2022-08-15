@@ -1,7 +1,7 @@
 var loaded = false;
 async function load() {
-    await faceapi.loadSsdMobilenetv1Model("/models");
-    await faceapi.loadFaceLandmarkModel("/models");
+    await faceapi.loadSsdMobilenetv1Model("models");
+    await faceapi.loadFaceLandmarkModel("models");
     loaded = true;
 }
 async function get_landmarks(image) {
