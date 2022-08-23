@@ -1,9 +1,11 @@
-# FaceMerge2
+# Face Merge 2
 This tool enables one to merge multiple faces.
 
+## Web App
 This is a full web application available here:
 https://pauldubois98.github.io/FaceMerge2/
 
+## Face Merge History
 This is version 2 of [FaceMerge](https://github.com/pauldubois98/FaceMerge).
 This new version is full web, with computations done on the client's side.
 
