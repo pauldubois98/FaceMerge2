@@ -3,3 +3,8 @@ This tool enables one to merge multiple faces.
 
 This is a full web application available here:
 https://pauldubois98.github.io/FaceMerge2/
+
+This is version 2 of [FaceMerge](https://github.com/pauldubois98/FaceMerge).
+This new version is full web, with computations done on the client's side.
+
+You can find more about the project here: https://pauldubois98.github.io/FaceMerge/index.html and see the steps explanations here: https://pauldubois98.github.io/FaceMerge/doc.html.
