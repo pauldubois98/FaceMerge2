@@ -23,6 +23,8 @@ function upload(event) {
   }
   circle();
   load_bar.value = 0;
+  circle_btn.disabled = true;
+  center_btn.disabled = true;
 }
 
 function circle() {
