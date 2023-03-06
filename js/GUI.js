@@ -1,7 +1,3 @@
-var images_div = document.getElementById("faces");
-var center_btn = document.getElementById("center_btn");
-var circle_btn = document.getElementById("circle_btn");
-var load_bar = document.getElementById("load");
 var images = [];
 var hidden_images = [];
 var images_landmarks = [];
@@ -13,7 +9,7 @@ var merge_scale_factor = 1;
 function addImage(file) {
   var img = document.createElement("img");
   img.src = URL.createObjectURL(file);
-  images_div.appendChild(img);
+  faces_div.appendChild(img);
   images.push(img);
   var hidden_img = document.createElement("img");
   hidden_img.src = URL.createObjectURL(file);
@@ -30,10 +26,10 @@ function upload(event) {
 }
 
 function circle() {
-  let circles = images_div.querySelectorAll("img");
+  let circles = faces_div.querySelectorAll("img");
   let dangle = (2 * Math.PI) / circles.length;
   let op = 1;
-  let r = Math.min(images_div.clientWidth, images_div.clientHeight) / 3;
+  let r = Math.min(faces_div.clientWidth, faces_div.clientHeight) / 3;
   for (let i = 0; i < circles.length; ++i) {
     let circle = circles[i];
     let angle = dangle * i;
@@ -43,7 +39,7 @@ function circle() {
 }
 
 function center() {
-  let circles = images_div.querySelectorAll("img");
+  let circles = faces_div.querySelectorAll("img");
   for (let i = 0; i < circles.length; ++i) {
     circles[i].style.transform = `\
     translate(${-images_centers[i][0] / images_scales[i]}px, \
@@ -53,4 +49,4 @@ function center() {
   }
 }
 
-let circles = images_div.querySelectorAll("img");
+let circles = faces_div.querySelectorAll("img");

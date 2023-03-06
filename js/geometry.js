@@ -28,7 +28,7 @@ async function calculate_landmarks() {
 function calculate_centers() {
   images_centers = [];
   abs_images_centers = [];
-  let circles = images_div.querySelectorAll("img");
+  let circles = faces_div.querySelectorAll("img");
   for (let i = 0; i < hidden_images.length; i++) {
     var img = hidden_images[i];
     var landmarks = images_landmarks[i];

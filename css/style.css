@@ -8,7 +8,7 @@ body {
     align-items: center;
 }
 
-#faces {
+#faces_div {
     position: relative;
     width: 40em;
     height: 30em;
@@ -16,7 +16,7 @@ body {
     margin-top: 1em
 }
 
-#faces img {
+#faces_div img {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -27,7 +27,7 @@ body {
     transition-duration: 3s;
 }
 
-#load {
+#load_bar {
     width: 40em;
     accent-color: rebeccapurple;
 }
@@ -66,14 +66,14 @@ body {
     } 
 }
 
-#hidden_faces {
+#hidden_faces_div {
     position: absolute;
     top: 0;
     left: 0;
     z-index: -10;
     display: none;
 }
-#hidden_faces img {
+#hidden_faces_div img {
     position: absolute;
     top: 0;
     left: 0;
