@@ -27,6 +27,11 @@ body {
     transition-duration: 3s;
 }
 
+#load {
+    width: 40em;
+    accent-color: rebeccapurple;
+}
+
 #hidden_faces {
     position: absolute;
     top: 0;
