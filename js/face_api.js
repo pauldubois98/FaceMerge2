@@ -1,9 +1,3 @@
-var loaded = false;
-async function load() {
-    await faceapi.loadSsdMobilenetv1Model("models");
-    await faceapi.loadFaceLandmarkModel("models");
-    loaded = true;
-}
 async function get_landmarks(image) {
     // // full detections
     // const detections = await faceapi.detectAllFaces(input)
@@ -17,9 +11,10 @@ async function get_landmarks(image) {
 }
 
 window.onload = async function () {
-    await load();
+    await faceapi.loadSsdMobilenetv1Model("models");
+    await faceapi.loadFaceLandmarkModel("models");
     var hidden_img = document.getElementById("default-profile");
     await faceapi.detectAllFaces(hidden_img).withFaceLandmarks();
-    loaded = true;
     console.log("loaded");
+    full_load.style.display = "none";
 };

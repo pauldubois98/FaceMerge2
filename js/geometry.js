@@ -1,4 +1,5 @@
 async function calculate_landmarks() {
+  full_load.style.display = "flex";
   circle_btn.disabled = true;
   center_btn.disabled = true;
   load_bar.value = 0;
@@ -21,6 +22,7 @@ async function calculate_landmarks() {
   load_bar.value = 1;
   circle_btn.disabled = false;
   center_btn.disabled = false;
+  full_load.style.display = "none";
 }
 
 function calculate_centers() {
