@@ -26,6 +26,7 @@ function upload(event) {
     addImage(file);
   }
   circle();
+  load_bar.value = 0;
 }
 
 function circle() {
@@ -36,9 +37,7 @@ function circle() {
   for (let i = 0; i < circles.length; ++i) {
     let circle = circles[i];
     let angle = dangle * i;
-    circle.style.transform = `translate(${Math.cos(angle) * r}px, ${
-      Math.sin(angle) * r
-    }px)`;
+    circle.style.transform = `translate(${Math.cos(angle) * r}px, ${Math.sin(angle) * r}px)`;
     circle.style.opacity = `${op}`;
   }
 }

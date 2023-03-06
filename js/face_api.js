@@ -5,9 +5,7 @@ async function load() {
     loaded = true;
 }
 async function get_landmarks(image) {
-    if (!loaded) {
-        await load();
-    }
+    // // full detections
     // const detections = await faceapi.detectAllFaces(input)
     // console.log(detections)
     const detectionsWithLandmarks = await faceapi
@@ -17,4 +15,11 @@ async function get_landmarks(image) {
     // console.log(detectionsWithLandmarks[0].landmarks);
     return detectionsWithLandmarks[0].landmarks;
 }
-load();
+
+window.onload = async function () {
+    await load();
+    var hidden_img = document.getElementById("default-profile");
+    await faceapi.detectAllFaces(hidden_img).withFaceLandmarks();
+    loaded = true;
+    console.log("loaded");
+};
