@@ -5,8 +5,10 @@ var abs_images_centers = [];
 var images_centers = [];
 var images_scales = [];
 var merge_scale_factor = 1;
-var align_indice = 0;
+var avatar_index = 0;
+var align_index = 0;
 var circles = [];
+var avatars_images = [];
 
 function addImage(file) {
   var img = document.createElement("img");
@@ -16,6 +18,21 @@ function addImage(file) {
   var hidden_img = document.createElement("img");
   hidden_img.src = URL.createObjectURL(file);
   hidden_images.push(hidden_img);
+}
+function add_avatar() {
+  avatars_images = avatars_div.querySelectorAll("img");
+  var img = avatars_images[avatar_index].cloneNode(true);
+  faces_div.appendChild(img);
+  images.push(img);
+  var hidden_img = avatars_images[avatar_index].cloneNode(true);
+  hidden_images.push(hidden_img);
+  avatar_index = (avatar_index + 1) % avatars_images.length;
+  circle();
+  load_bar.value = 0;
+  circle_btn.disabled = true;
+  circle_one_btn.disabled = true;
+  center_btn.disabled = true;
+  center_one_btn.disabled = true;
 }
 
 function upload(event) {
@@ -42,18 +59,18 @@ function circle() {
     circle.style.transform = `translate(${Math.cos(angle) * r}px, ${Math.sin(angle) * r}px)`;
     circle.style.opacity = `${op}`;
   }
-  align_indice = 0;
+  align_index = 0;
 }
 function circle_one() {
   circles = faces_div.querySelectorAll("img");
   let dangle = (2 * Math.PI) / circles.length;
   let op = 1;
   let r = Math.min(faces_div.clientWidth, faces_div.clientHeight) / 3;
-  let circle = circles[align_indice];
-  let angle = dangle * align_indice;
+  let circle = circles[align_index];
+  let angle = dangle * align_index;
   circle.style.transform = `translate(${Math.cos(angle) * r}px, ${Math.sin(angle) * r}px)`;
   circle.style.opacity = `${op}`;
-  align_indice = Math.max(align_indice - 1, 0);
+  align_index = Math.max(align_index - 1, 0);
 }
 
 function center() {
@@ -65,14 +82,14 @@ function center() {
     scale(${1 / images_scales[i]})`;
     circles[i].style.opacity = `${(1-(i/circles.length))}`;
   }
-  align_indice = circles.length - 1;
+  align_index = circles.length - 1;
 }
 function center_one() {
   circles = faces_div.querySelectorAll("img");
-  circles[align_indice].style.transform = `\
-  translate(${-images_centers[align_indice][0] / images_scales[align_indice]}px, \
-  ${-images_centers[align_indice][1] / images_scales[align_indice]}px)\
-  scale(${1 / images_scales[align_indice]})`;
-  circles[align_indice].style.opacity = `${(1-(align_indice/circles.length))}`;
-  align_indice = Math.min(align_indice + 1, circles.length - 1);
+  circles[align_index].style.transform = `\
+  translate(${-images_centers[align_index][0] / images_scales[align_index]}px, \
+  ${-images_centers[align_index][1] / images_scales[align_index]}px)\
+  scale(${1 / images_scales[align_index]})`;
+  circles[align_index].style.opacity = `${(1-(align_index/circles.length))}`;
+  align_index = Math.min(align_index + 1, circles.length - 1);
 }

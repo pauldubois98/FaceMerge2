@@ -19,7 +19,10 @@
     <div>
         <input type="file" multiple id="images-input" accept="image/*" name="images" onchange="upload(event);">
         <br>
+        <button onclick="add_avatar();">Add Avatar</button>
+        <br>
         <button onclick="calculate_landmarks();">Process</button>
+        <br>
         <button id="center_btn" onclick="center();" disabled>Center</button>
         <button id="circle_btn" onclick="circle();" disabled>Circle</button>
         <br>
@@ -31,6 +34,16 @@
 
     <div style="display: none;">
         <img src="default-profile.png" id="default-profile">
+        <div id="avatars_div">
+            <img src="test_images/avatar1.jpg" id="avatar1">
+            <img src="test_images/avatar2.jpg" id="avatar2">
+            <img src="test_images/avatar3.jpg" id="avatar3">
+            <img src="test_images/avatar4.jpg" id="avatar4">
+            <img src="test_images/avatar5.jpg" id="avatar5">
+            <img src="test_images/avatar6.jpg" id="avatar6">
+            <img src="test_images/avatar7.jpg" id="avatar7">
+            <img src="test_images/avatar8.jpg" id="avatar8">
+        </div>
     </div>
 
     <div id="full_load">
