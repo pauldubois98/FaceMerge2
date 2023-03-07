@@ -16,3 +16,6 @@ We use Face-API (https://justadudewhohacks.github.io/face-api.js/docs/) to detec
 
 Circle elements is inspired from https://jsfiddle.net/ItayGrudev/3jqryc1m/.
 
+## Avatars
+We provide 8 avatars to test the website.
+They were generated using AI (check out https://this-person-does-not-exist.com/en).
