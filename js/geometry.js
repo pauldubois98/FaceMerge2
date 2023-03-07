@@ -1,7 +1,9 @@
 async function calculate_landmarks() {
   full_load.style.display = "flex";
   circle_btn.disabled = true;
+  circle_one_btn.disabled = true;
   center_btn.disabled = true;
+  center_one_btn.disabled = true;
   load_bar.value = 0;
 
   images_landmarks = [];
@@ -21,7 +23,9 @@ async function calculate_landmarks() {
   console.log(images_scales);
   load_bar.value = 1;
   circle_btn.disabled = false;
+  circle_one_btn.disabled = false;
   center_btn.disabled = false;
+  center_one_btn.disabled = false;
   full_load.style.display = "none";
 }
 
