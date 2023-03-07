@@ -13,14 +13,14 @@ async function calculate_landmarks() {
     images_landmarks.push(landmarks);
     load_bar.value = (i+1)/hidden_images.length;
   }
-  console.log("landmarks:");
-  console.log(images_landmarks);
+  // console.log("landmarks:");
+  // console.log(images_landmarks);
   calculate_centers();
-  console.log("centers:");
-  console.log(images_centers);
+  // console.log("centers:");
+  // console.log(images_centers);
   calculate_scale();
-  console.log("scales:");
-  console.log(images_scales);
+  // console.log("scales:");
+  // console.log(images_scales);
   load_bar.value = 1;
   circle_btn.disabled = false;
   circle_one_btn.disabled = false;

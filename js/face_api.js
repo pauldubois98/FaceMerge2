@@ -15,6 +15,6 @@ window.onload = async function () {
     await faceapi.loadFaceLandmarkModel("models");
     var hidden_img = document.getElementById("avatar");
     await faceapi.detectAllFaces(hidden_img).withFaceLandmarks();
-    console.log("loaded");
+    // console.log("loaded");
     full_load.style.display = "none";
 };
