@@ -34,6 +34,7 @@ async function calculate_landmarks() {
 
 function calculate_centers() {
   images_centers = [];
+  images_translations = [];
   abs_images_centers = [];
   let circles = faces_div.querySelectorAll("img");
   for (let i = 0; i < hidden_images.length; i++) {
@@ -47,24 +48,27 @@ function calculate_centers() {
       total_y += item._y;
       count++;
     });
-    f_c = [
+    abs_images_centers.push([total_x / count, total_y / count]);
+    images_centers.push([
       (circles[i].width * (total_x / count)) / img.width,
       (circles[i].height * (total_y / count)) / img.height,
-    ];
-    abs_images_centers.push([total_x / count, total_y / count]);
-    images_centers.push(f_c);
+    ]);
+    images_translations.push([
+      (circles[i].width * (total_x / count)) / img.width,
+      (circles[i].height * (total_y / count)) / img.height,
+    ]);
   }
   var c_x = 0;
   var c_y = 0;
-  for (let i = 0; i < images_centers.length; i++) {
-    c_x += images_centers[i][0];
-    c_y += images_centers[i][1];
+  for (let i = 0; i < images_translations.length; i++) {
+    c_x += images_translations[i][0];
+    c_y += images_translations[i][1];
   }
-  c_x /= images_centers.length;
-  c_y /= images_centers.length;
-  for (let i = 0; i < images_centers.length; i++) {
-    images_centers[i][0] -= c_x;
-    images_centers[i][1] -= c_y;
+  c_x /= images_translations.length;
+  c_y /= images_translations.length;
+  for (let i = 0; i < images_translations.length; i++) {
+    images_translations[i][0] -= c_x;
+    images_translations[i][1] -= c_y;
   }
 }
 
@@ -120,9 +124,9 @@ function calculate_scale() {
       total += Math.sqrt((item._x - c_x) ** 2 + (item._y - c_y) ** 2);
       count++;
     });
-    var span = Math.sqrt(img.width ** 2 + img.height ** 2);
-    f_s = total / count / span;
-    images_scales.push(f_s);
+    // var span = Math.sqrt(img.width ** 2 + img.height ** 2);
+    var scale = total / count;
+    images_scales.push(scale);
   }
   var c = images_scales[0];
   for (let i = 1; i < images_scales.length; i++) {
