@@ -18,6 +18,9 @@ async function calculate_landmarks() {
   calculate_centers();
   // console.log("centers:");
   // console.log(images_centers);
+  calculate_rotation();
+  // console.log("rotations:");
+  // console.log(images_rotations);
   calculate_scale();
   // console.log("scales:");
   // console.log(images_scales);
@@ -64,6 +67,45 @@ function calculate_centers() {
     images_centers[i][1] -= c_y;
   }
 }
+
+function calculate_rotation() {
+  images_rotations = [];
+  landmarks0 = images_landmarks[0];
+  var c_x0 = abs_images_centers[0][0];
+  var c_y0 = abs_images_centers[0][1];
+  images_rotations.push(0);
+  for (let i = 1; i < hidden_images.length; i++) {
+    var img = hidden_images[i];
+    var landmarks = images_landmarks[i];
+    var s_x = 0;
+    var s_y = 0;
+    var c_x = abs_images_centers[i][0];
+    var c_y = abs_images_centers[i][1];
+    for (let j = 0; j < landmarks._positions.length; j++) {
+      var x1 = landmarks._positions[j]._x - c_x;
+      var y1 = landmarks._positions[j]._y - c_y;
+      var x2 = landmarks0._positions[j]._x - c_x0;
+      var y2 = landmarks0._positions[j]._y - c_y0;
+      var x3 = x1 * x2 + y1 * y2;
+      var y3 = x1 * y2 - y1 * x2;
+      s_x += x3;
+      s_y += y3;
+    }
+    rotation = Math.atan2(s_y, s_x);
+    images_rotations.push(rotation);
+  }
+  var total_rotation = 0;
+  var count = 0;
+  for (let i = 0; i < images_rotations.length; i++) {
+    total_rotation += images_rotations[i];
+    count++;
+  }
+  var mean_rotation = total_rotation /= count;
+  for (let i = 0; i < images_rotations.length; i++) {
+    images_rotations[i] -= mean_rotation;
+  }
+}
+
 
 function calculate_scale() {
   images_scales = [];
