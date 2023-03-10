@@ -4,6 +4,7 @@ var images_landmarks = [];
 var abs_images_centers = [];
 var images_centers = [];
 var images_scales = [];
+var images_rotations = [];
 var merge_scale_factor = 1;
 var avatar_index = 0;
 var align_index = 0;
@@ -79,6 +80,7 @@ function center() {
     circles[i].style.transform = `\
     translate(${-images_centers[i][0] / images_scales[i]}px, \
     ${-images_centers[i][1] / images_scales[i]}px)\
+    rotate(${images_rotations[i]}rad)\
     scale(${1 / images_scales[i]})`;
     circles[i].style.opacity = `${(1-(i/circles.length))}`;
   }
@@ -86,10 +88,16 @@ function center() {
 }
 function center_one() {
   circles = faces_div.querySelectorAll("img");
+  // circles[align_index].style.transform = `\
+  // translate(${-images_centers[align_index][0] / images_scales[align_index]}px, \
+  // ${-images_centers[align_index][1] / images_scales[align_index]}px)\
+  // scale(${1 / images_scales[align_index]})`;
   circles[align_index].style.transform = `\
   translate(${-images_centers[align_index][0] / images_scales[align_index]}px, \
   ${-images_centers[align_index][1] / images_scales[align_index]}px)\
-  scale(${1 / images_scales[align_index]})`;
+  rotate(${images_rotations[align_index]}rad)\
+  scale(${1 / images_scales[align_index]})\
+  `; 
   circles[align_index].style.opacity = `${(1-(align_index/circles.length))}`;
   align_index = Math.min(align_index + 1, circles.length - 1);
 }
