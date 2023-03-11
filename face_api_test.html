@@ -27,7 +27,6 @@
 <script>
     var loaded = false;
     async function load() {
-        console.log(faceapi.nets)
         await faceapi.loadSsdMobilenetv1Model('/models')
         await faceapi.loadFaceLandmarkModel('/models')
         loaded = true
@@ -39,12 +38,29 @@
         // const detections = await faceapi.detectAllFaces(input)
         // console.log(detections)
         const detectionsWithLandmarks = await faceapi.detectAllFaces(image).withFaceLandmarks()
-        console.log(detectionsWithLandmarks);
-        console.log(detectionsWithLandmarks[0].landmarks);
-        return detectionsWithLandmarks[0].landmarks
+        // console.log(detectionsWithLandmarks);
+        // console.log(detectionsWithLandmarks[0].landmarks);
+        return detectionsWithLandmarks[0].landmarks._positions
+    }    
+    async function draw_landmarks(input){
+        landmarks = await get_landmarks(input);
+        for (let i = 0; i < landmarks.length; i++) {
+            const x = landmarks[i]._x * input.width / input.naturalWidth;
+            const y = landmarks[i]._y * input.height / input.naturalHeight;
+            // console.log(x, y);
+            // draw circle
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circle.setAttribute('cx', x);
+            circle.setAttribute('cy', y);
+            circle.setAttribute('r', 2);
+            circle.setAttribute('fill', 'red');
+            document.getElementById('mySvg').appendChild(circle);
+            
+
+        }
     }
     const input = document.getElementById('myImg');
-    landmarks = get_landmarks(input);
+    draw_landmarks(input);
 </script>
 
 </html>
