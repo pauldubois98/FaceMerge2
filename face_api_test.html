@@ -3,12 +3,24 @@
 
 <head>
     <meta charset="utf-8">
-
+    <style>
+        #myImg {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #mySvg {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
 </head>
 
 <body>
     <img id="myImg" src="test_images/avatar.png" height="500">
-    <canvas id="myCanvas">
+    <svg id="mySvg" width="500" height="500"></svg>
+    <canvas id="myCanvas"></canvas>
 </body>
 
 <script src="face-api.min.js"></script>
@@ -31,8 +43,8 @@
         console.log(detectionsWithLandmarks[0].landmarks);
         return detectionsWithLandmarks[0].landmarks
     }
-    const input = document.getElementById('myImg')
-    get_landmarks(input)
+    const input = document.getElementById('myImg');
+    landmarks = get_landmarks(input);
 </script>
 
 </html>
