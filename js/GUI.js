@@ -1,14 +1,12 @@
 var images = [];
 var hidden_images = [];
 var images_landmarks = [];
-var abs_images_centers = [];
 var images_centers = [];
 var images_translations = [];
 var images_eyes_positions = [];
 var images_scales = [];
 var images_rotations = [];
 var images_centered = [];
-var merge_scale_factor = 1;
 var avatar_index = 0;
 
 function addImage(file) {
