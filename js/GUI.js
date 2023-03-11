@@ -7,9 +7,9 @@ var images_translations = [];
 var images_eyes_positions = [];
 var images_scales = [];
 var images_rotations = [];
+var images_centered = [];
 var merge_scale_factor = 1;
 var avatar_index = 0;
-var align_index = 0;
 
 function addImage(file) {
   var img = document.createElement("img");
@@ -60,8 +60,16 @@ function circle() {
     image.style.opacity = `${op}`;
   }
   align_index = 0;
+  images_centered = Array(images.length).fill(0);
 }
 function circle_one() {
+  var align_index = images.length - 1;
+  while (align_index >= 0 && images_centered[align_index] == 0) {
+    align_index--;
+  }
+  if (align_index < 0) {
+    return;
+  }
   let dangle = (2 * Math.PI) / images.length;
   let op = 1;
   let r = Math.min(faces_div.clientWidth, faces_div.clientHeight) / 3;
@@ -69,7 +77,7 @@ function circle_one() {
   let angle = dangle * align_index;
   image.style.transform = `translate(${Math.cos(angle) * r}px, ${Math.sin(angle) * r}px)`;
   image.style.opacity = `${op}`;
-  align_index = Math.max(align_index - 1, 0);
+  images_centered[align_index] = 0;
 }
 
 function center() {
@@ -88,8 +96,16 @@ function center() {
     image.style.opacity = `${(1-(i/images.length))}`;
   }
   align_index = images.length - 1;
+  images_centered = Array(images.length).fill(1);
 }
 function center_one() {
+  var align_index = 0;
+  while (align_index < images.length && images_centered[align_index] == 1) {
+    align_index++;
+  }
+  if (align_index == images.length) {
+    return;
+  }
   var image = images[align_index];
   image.style.transformOrigin = `\
   ${images_centers[align_index][0]}px\
@@ -102,5 +118,5 @@ function center_one() {
   scale(${35 / images_scales[align_index]})\
   `;
   image.style.opacity = `${(1-(align_index/images.length))}`;
-  align_index = Math.min(align_index + 1, images.length - 1);
+  images_centered[align_index] = 1;
 }
