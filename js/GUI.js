@@ -91,7 +91,7 @@ function center() {
     translate(${-images_translations[i][0]}px, \
     ${-images_translations[i][1]}px)\
     rotate(${-images_rotations[i]}rad)\
-    scale(${35 / images_scales[i]})\
+    scale(${1 / images_scales[i]})\
     `;
     image.style.opacity = `${(1-(i/images.length))}`;
   }
@@ -115,7 +115,7 @@ function center_one() {
   translate(${-images_translations[align_index][0]}px, \
   ${-images_translations[align_index][1]}px)\
   rotate(${-images_rotations[align_index]}rad)\
-  scale(${35 / images_scales[align_index]})\
+  scale(${1 / images_scales[align_index]})\
   `;
   image.style.opacity = `${(1-(align_index/images.length))}`;
   images_centered[align_index] = 1;

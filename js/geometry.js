@@ -5,6 +5,7 @@ async function calculate_landmarks() {
   center_btn.disabled = true;
   center_one_btn.disabled = true;
   load_bar.value = 0;
+  // landmarks calculation
   images_landmarks = [];
   for (let i = 0; i < hidden_images.length; i++) {
     var hidden_image = hidden_images[i];
@@ -39,12 +40,29 @@ async function calculate_landmarks() {
       left_eye_center[1] - right_eye_center[1],
       left_eye_center[0] - right_eye_center[0]
     )-Math.PI;
-    images_centers.push(eye_center);
+    images_centers.push((eye_center[0],eye_center[1]));
     images_translations.push(eye_center);
     images_scales.push(eye_distance);
     images_rotations.push(eye_angle);
     load_bar.value = (i+1)/hidden_images.length;
   }
+  // normalization
+  var mean_translation = [0,0];
+  var mean_scale = 0;
+  for (let i = 0; i < images_centers.length; i++) {
+    mean_translation[0] += images_translations[i][0];
+    mean_translation[1] += images_translations[i][1];
+    mean_scale += images_scales[i];
+  }
+  mean_translation[0] /= images_translations.length;
+  mean_translation[1] /= images_translations.length;
+  mean_scale /= images_scales.length;
+  for (let i = 0; i < images_centers.length; i++) {
+    images_translations[i][0] -= mean_translation[0];
+    images_translations[i][1] -= mean_translation[1];
+    images_scales[i] /= mean_scale;
+  }
+  // update interface
   load_bar.value = 1;
   circle_btn.disabled = false;
   circle_one_btn.disabled = false;
