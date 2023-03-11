@@ -10,8 +10,6 @@ var images_rotations = [];
 var merge_scale_factor = 1;
 var avatar_index = 0;
 var align_index = 0;
-var circles = [];
-var avatars_images = [];
 
 function addImage(file) {
   var img = document.createElement("img");
@@ -23,7 +21,7 @@ function addImage(file) {
   hidden_images.push(hidden_img);
 }
 function add_avatar() {
-  avatars_images = avatars_div.querySelectorAll("img");
+  var avatars_images = avatars_div.querySelectorAll("img");
   var img = avatars_images[avatar_index].cloneNode(true);
   faces_div.appendChild(img);
   images.push(img);
@@ -52,59 +50,57 @@ function upload(event) {
 }
 
 function circle() {
-  circles = faces_div.querySelectorAll("img");
-  let dangle = (2 * Math.PI) / circles.length;
+  let dangle = (2 * Math.PI) / images.length;
   let op = 1;
   let r = Math.min(faces_div.clientWidth, faces_div.clientHeight) / 3;
-  for (let i = 0; i < circles.length; ++i) {
-    let circle = circles[i];
+  for (let i = 0; i < images.length; ++i) {
+    let image = images[i];
     let angle = dangle * i;
-    circle.style.transform = `translate(${Math.cos(angle) * r}px, ${Math.sin(angle) * r}px)`;
-    circle.style.opacity = `${op}`;
+    image.style.transform = `translate(${Math.cos(angle) * r}px, ${Math.sin(angle) * r}px)`;
+    image.style.opacity = `${op}`;
   }
   align_index = 0;
 }
 function circle_one() {
-  circles = faces_div.querySelectorAll("img");
-  let dangle = (2 * Math.PI) / circles.length;
+  let dangle = (2 * Math.PI) / images.length;
   let op = 1;
   let r = Math.min(faces_div.clientWidth, faces_div.clientHeight) / 3;
-  let circle = circles[align_index];
+  let image = images[align_index];
   let angle = dangle * align_index;
-  circle.style.transform = `translate(${Math.cos(angle) * r}px, ${Math.sin(angle) * r}px)`;
-  circle.style.opacity = `${op}`;
+  image.style.transform = `translate(${Math.cos(angle) * r}px, ${Math.sin(angle) * r}px)`;
+  image.style.opacity = `${op}`;
   align_index = Math.max(align_index - 1, 0);
 }
 
 function center() {
-  circles = faces_div.querySelectorAll("img");
-  for (let i = 0; i < circles.length; ++i) {
-    circles[i].style.transformOrigin = `\
+  for (let i = 0; i < images.length; ++i) {
+    let image = images[i];
+    image.style.transformOrigin = `\
     ${images_centers[i][0]}px\
     ${images_centers[i][1]}px\
     `;
-    circles[i].style.transform = `\
+    image.style.transform = `\
     translate(${-images_translations[i][0]}px, \
     ${-images_translations[i][1]}px)\
     rotate(${-images_rotations[i]}rad)\
     scale(${35 / images_scales[i]})\
     `;
-    circles[i].style.opacity = `${(1-(i/circles.length))}`;
+    image.style.opacity = `${(1-(i/images.length))}`;
   }
-  align_index = circles.length - 1;
+  align_index = images.length - 1;
 }
 function center_one() {
-  circles = faces_div.querySelectorAll("img");
-  circles[align_index].style.transformOrigin = `\
+  var image = images[align_index];
+  image.style.transformOrigin = `\
   ${images_centers[align_index][0]}px\
   ${images_centers[align_index][1]}px\
   `;
-  circles[align_index].style.transform = `\
+  image.style.transform = `\
   translate(${-images_translations[align_index][0]}px, \
   ${-images_translations[align_index][1]}px)\
   rotate(${-images_rotations[align_index]}rad)\
   scale(${35 / images_scales[align_index]})\
   `;
-  circles[align_index].style.opacity = `${(1-(align_index/circles.length))}`;
-  align_index = Math.min(align_index + 1, circles.length - 1);
+  image.style.opacity = `${(1-(align_index/images.length))}`;
+  align_index = Math.min(align_index + 1, images.length - 1);
 }
