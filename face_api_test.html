@@ -55,7 +55,13 @@
             circle.setAttribute('r', 2);
             circle.setAttribute('fill', 'red');
             document.getElementById('mySvg').appendChild(circle);
-            
+            // draw text
+            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            text.setAttribute('x', x);
+            text.setAttribute('y', y);
+            text.setAttribute('fill', 'black');
+            text.innerHTML = i;
+            document.getElementById('mySvg').appendChild(text);
 
         }
     }
