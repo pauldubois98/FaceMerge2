@@ -39,7 +39,8 @@ async function calculate_landmarks() {
     var eye_angle = Math.atan2(
       left_eye_center[1] - right_eye_center[1],
       left_eye_center[0] - right_eye_center[0]
-    )-Math.PI;
+    ) + Math.PI;
+    eye_angle %= Math.PI;
     images_centers.push((eye_center[0],eye_center[1]));
     images_translations.push(eye_center);
     images_scales.push(eye_distance);
