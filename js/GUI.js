@@ -47,6 +47,24 @@ function upload(event) {
   center_one_btn.disabled = true;
 }
 
+function drop_all(){
+  faces_div.innerHTML = "";
+  images = [];
+  hidden_images = [];
+  images_landmarks = [];
+  images_centers = [];
+  images_translations = [];
+  images_eyes_positions = [];
+  images_scales = [];
+  images_rotations = [];
+  images_centered = [];
+  load_bar.value = 0;
+  circle_btn.disabled = true;
+  circle_one_btn.disabled = true;
+  center_btn.disabled = true;
+  center_one_btn.disabled = true;
+}
+
 function circle() {
   let dangle = (2 * Math.PI) / images.length;
   let op = 1;
