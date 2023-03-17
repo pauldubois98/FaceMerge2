@@ -7,6 +7,12 @@ async function calculate_landmarks() {
   load_bar.value = 0;
   // landmarks calculation
   images_landmarks = [];
+  images_centers = [];
+  images_translations = [];
+  images_eyes_positions = [];
+  images_scales = [];
+  images_rotations = [];
+  images_centered = [];
   for (let i = 0; i < hidden_images.length; i++) {
     var hidden_image = hidden_images[i];
     var image = images[i];
@@ -32,17 +38,20 @@ async function calculate_landmarks() {
       (left_eye_center[0] + right_eye_center[0]) / 2,
       (left_eye_center[1] + right_eye_center[1]) / 2
     ];
+    var eye_translation = [
+      (left_eye_center[0] + right_eye_center[0]) / 2,
+      (left_eye_center[1] + right_eye_center[1]) / 2
+    ];
     var eye_distance = Math.sqrt(
       Math.pow(left_eye_center[0] - right_eye_center[0], 2) +
       Math.pow(left_eye_center[1] - right_eye_center[1], 2)
     );
     var eye_angle = Math.atan2(
-      left_eye_center[1] - right_eye_center[1],
-      left_eye_center[0] - right_eye_center[0]
-    ) + Math.PI;
-    eye_angle %= Math.PI;
-    images_centers.push((eye_center[0],eye_center[1]));
-    images_translations.push(eye_center);
+      right_eye_center[1] - left_eye_center[1],
+      right_eye_center[0] - left_eye_center[0]
+    );
+    images_centers.push(eye_center);
+    images_translations.push(eye_translation);
     images_scales.push(eye_distance);
     images_rotations.push(eye_angle);
     load_bar.value = (i+1)/hidden_images.length;
