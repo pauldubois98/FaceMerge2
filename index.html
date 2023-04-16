@@ -17,7 +17,9 @@
     </header>
 
     <div>
-        <button onclick="drop_all();">Drop All Images</button>
+        <button onclick="drop_all();" class="button-icon">
+            <img src="icons/clear_all.svg" class="icon">    
+        </button>
         <input type="file" multiple id="images-input" accept="image/*" name="images" onchange="upload(event);">
         <br>
         <button onclick="add_avatar();">Add Avatar</button>
