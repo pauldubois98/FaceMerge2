@@ -18,10 +18,10 @@ async function calculate_landmarks() {
     var image = images[i];
     landmarks = await get_landmarks(hidden_image);
     images_landmarks.push(landmarks);
-    var left_eye = landmarks._positions.slice(36,42);
-    var right_eye = landmarks._positions.slice(42,48);
-    var left_eye_center = [0,0];
-    var right_eye_center = [0,0];
+    var left_eye = landmarks._positions.slice(36, 42);
+    var right_eye = landmarks._positions.slice(42, 48);
+    var left_eye_center = [0, 0];
+    var right_eye_center = [0, 0];
     for (let j = 0; j < left_eye.length; j++) {
       left_eye_center[0] += left_eye[j]._x * image.width / hidden_image.width;
       left_eye_center[1] += left_eye[j]._y * image.height / hidden_image.height;
@@ -54,10 +54,10 @@ async function calculate_landmarks() {
     images_translations.push(eye_translation);
     images_scales.push(eye_distance);
     images_rotations.push(eye_angle);
-    load_bar.value = (i+1)/hidden_images.length;
+    load_bar.value = (i + 1) / hidden_images.length;
   }
   // normalization
-  var mean_translation = [0,0];
+  var mean_translation = [0, 0];
   var mean_scale = 0;
   for (let i = 0; i < images_centers.length; i++) {
     mean_translation[0] += images_translations[i][0];

@@ -20,7 +20,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    margin: calc( -10em / 2);
+    margin: calc(-10em / 2);
     background: teal;
     max-width: 10em;
     max-height: 10em;
@@ -32,7 +32,7 @@ body {
     accent-color: rebeccapurple;
 }
 
-#full_load{
+#full_load {
     height: 100%;
     width: 100%;
     z-index: 1;
@@ -43,53 +43,65 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.75);
+    background-color: rgba(0, 0, 0, 0.75);
     color: #bfbfbf;
     text-align: center;
     cursor: wait;
 }
 
-#controls{
+#controls {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.icon{
+
+.icon {
     width: 2em;
     height: 2em;
     border-radius: 0.5em;
 }
-.button-icon{
+
+.button-icon {
     height: 2.5em;
     padding: 0.1em;
     margin: 0.5em;
 }
-.big-icon{
+
+.big-icon {
     width: 4em;
     height: 4em;
     border-radius: 1em;
 }
-.big-button-icon{
+
+.big-button-icon {
     height: 5em;
     padding: 0.2em;
     margin: 0.5em;
 }
-.rotate{
-    -webkit-animation:spin 1s linear infinite;
-    -moz-animation:spin 1s linear infinite;
-    animation:spin 1s linear infinite;
+
+.rotate {
+    -webkit-animation: spin 1s linear infinite;
+    -moz-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
 }
-@-moz-keyframes spin { 
-    100% { -moz-transform: rotate(360deg); } 
+
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
 }
-@-webkit-keyframes spin { 
-    100% { -webkit-transform: rotate(360deg); } 
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
-@keyframes spin { 
-    100% { 
-        -webkit-transform: rotate(360deg); 
-        transform:rotate(360deg); 
-    } 
+
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
 }
 
 #hidden_faces_div {
@@ -99,6 +111,7 @@ body {
     z-index: -10;
     display: none;
 }
+
 #hidden_faces_div img {
     position: absolute;
     top: 0;

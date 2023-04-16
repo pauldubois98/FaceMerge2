@@ -47,7 +47,7 @@ function upload(event) {
   center_one_btn.disabled = true;
 }
 
-function drop_all(){
+function drop_all() {
   faces_div.innerHTML = "";
   images = [];
   hidden_images = [];
@@ -109,7 +109,7 @@ function center() {
     rotate(${-images_rotations[i]}rad)\
     scale(${1 / images_scales[i]})\
     `;
-    image.style.opacity = `${(1-(i/images.length))}`;
+    image.style.opacity = `${(1 - (i / images.length))}`;
   }
   align_index = images.length - 1;
   images_centered = Array(images.length).fill(1);
@@ -133,6 +133,6 @@ function center_one() {
   rotate(${-images_rotations[align_index]}rad)\
   scale(${1 / images_scales[align_index]})\
   `;
-  image.style.opacity = `${(1-(align_index/images.length))}`;
+  image.style.opacity = `${(1 - (align_index / images.length))}`;
   images_centered[align_index] = 1;
 }
