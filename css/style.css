@@ -48,6 +48,15 @@ body {
     text-align: center;
     cursor: wait;
 }
+.icon{
+    width: 2em;
+    height: 2em;
+    border-radius: 0.5em;
+}
+.button-icon{
+    height: 2.5em;
+    padding: 0.1em
+}
 .rotate{
     -webkit-animation:spin 1s linear infinite;
     -moz-animation:spin 1s linear infinite;
