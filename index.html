@@ -16,29 +16,29 @@
         <h1>Face Merge 2</h1>
     </header>
 
-    <div>
-        <button onclick="drop_all();" class="button-icon">
-            <img src="icons/clear_all.svg" class="icon">    
-        </button>
+    <div id="controls">
         <input type="file" multiple id="images-input" accept="image/*" name="images" onchange="upload(event);">
-        <br>
-        <button onclick="add_avatar();" class="button-icon">
-            <img src="icons/add_avatar.svg" class="icon">
-        </button>
-        <br>
-        <button onclick="calculate_landmarks();" class="button-icon">
-            <img src="icons/engine.svg" class="icon">
-        </button>
-        <br>
-        <button id="center_btn" onclick="center();" disabled class="big-button-icon">
-            <img src="icons/center_all.svg" class="big-icon">
-        </button>
-        <button id="circle_btn" onclick="circle();" disabled class="big-button-icon">
-            <img src="icons/circle_all.svg" class="big-icon">
-        </button>
-        <br>
-        <button id="center_one_btn" onclick="center_one();" disabled>Center One</button>
-        <button id="circle_one_btn" onclick="circle_one();" disabled>Circle One</button>
+        <div>
+            <button onclick="drop_all();" class="button-icon">
+                <img src="icons/clear_all.svg" class="icon">    
+            </button>
+            <button onclick="add_avatar();" class="button-icon">
+                <img src="icons/add_avatar.svg" class="icon">
+            </button>
+            <button onclick="calculate_landmarks();" class="button-icon">
+                <img src="icons/engine.svg" class="icon">
+            </button>
+        </div>
+        <div>
+            <button id="center_btn" onclick="center();" disabled class="big-button-icon">
+                <img src="icons/center_all.svg" class="big-icon">
+            </button>
+            <button id="circle_btn" onclick="circle();" disabled class="big-button-icon">
+                <img src="icons/circle_all.svg" class="big-icon">
+            </button>
+            <button id="center_one_btn" onclick="center_one();" disabled>Center One</button>
+            <button id="circle_one_btn" onclick="circle_one();" disabled>Circle One</button>
+        </div>
     </div>
     <div id="faces_div"></div>
     <progress id="load_bar" value="0"></progress>
