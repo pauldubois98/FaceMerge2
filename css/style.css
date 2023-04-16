@@ -57,6 +57,17 @@ body {
     height: 2.5em;
     padding: 0.1em
 }
+
+.big-icon{
+    width: 4em;
+    height: 4em;
+    border-radius: 1em;
+}
+.big-button-icon{
+    height: 5em;
+    padding: 0.2em
+}
+
 .rotate{
     -webkit-animation:spin 1s linear infinite;
     -moz-animation:spin 1s linear infinite;
